@@ -4,4 +4,8 @@
 # R studio file
 *.Rproj*
 
+#junk script
 test-code.R
+
+#zip files
+data
