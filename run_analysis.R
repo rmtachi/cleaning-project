@@ -5,7 +5,7 @@
 ## main script for loading, cleaning data
 
 ## set this to working directory, everything else should run unmodified
-setwd("~/R/coursera/data-cleaning/project")
+setwd("~/R/coursera/cleaning/project")
 
 ## load zip file
 zip.name <- "data/human-activity.zip"
@@ -56,6 +56,8 @@ main.feat <- grep("mean\\(\\)|std\\(\\)", x=features[,2])
 f.names <- sub("\\(\\)", "", features[main.feat,2])
 f.names <- gsub("\\-", ".", f.names)
 f.names <- sub("BodyBody", "Body", f.names)
+f.names <- sub("(\\w+)\\.([XYZ])", "\\2.\\1", f.names)
+f.names <- sub("(Mag)", ".\\1", f.names)
 
 ## rename activity labels
 ## (not necessary - could code directly)
@@ -68,14 +70,10 @@ names(har.data) <- f.names
 ## merge
 har.data <- cbind(subject = factor(c(train.subject, test.subject)),
 				  activity = factor(c(train.y, test.y), acts$val, acts$lab),			  
-				  har.data,
-				  set = c(rep(1, train.s), rep(2, test.s) )
+				  set = c(rep(1, train.s), rep(2, test.s) ),
+				  har.data				  
 				  )
 
-
-## order by subject and activity
-require(plyr)
-har.data <- arrange(har.data, subject, activity)
 
 ## remove part data
 rm(train.x, train.y, test.x, test.y, test.subject, 
@@ -84,11 +82,15 @@ rm(train.x, train.y, test.x, test.y, test.subject,
 
 ########## create summary data #############
 ## aggregate: for each column in df compute FUN over groups defined by "by"
-## 1st factor is rows, 2nd factor columns, etc. Since R iterates over rows first
-## last factor changes the least
 har.summ <- aggregate(har.data[,-(1:2)], 
 					  by=list(subject=har.data$subject, activity=har.data$activity),
 					  FUN=mean)
 
+
+## order by subject then activity
+require(plyr)
+har.summ <- arrange(har.summ, subject, activity)
+
 ## write
-write.table(har.summ, file="HAR_summary.txt", row.names = FALSE)
+write.table(har.summ, file="data/HAR_summary.txt", row.names = FALSE)
+write.table(har.data, file="data/HAR_mean_sd.txt", row.names = FALSE)
