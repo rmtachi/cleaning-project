@@ -2,12 +2,12 @@
 
 ## Dataset Information
 
-The original dataset is stored on the UCI machine learning repository ([here]), and the source is from Universit&#224 degli Studi di Genova. The data records the 3-dimensional acceleration and 3-dimensional angular acceleration for 30 subjects performing six activities (WALKING, WALKING\_UPSTAIRS, WALKING\_DOWNSTAIRS, SITTING, STANDING, LAYING). Each activity was sampled at 50Hz, with duration ranging between approximately 25 and 40 seconds. The data was then processed in a number of steps, summarized below:
+The original dataset is stored on the UCI machine learning repository ([here]), and the source is from Universit&#224; degli Studi di Genova. The data records the 3-dimensional acceleration and 3-dimensional angular acceleration for 30 subjects performing six activities (WALKING, WALKING\_UPSTAIRS, WALKING\_DOWNSTAIRS, SITTING, STANDING, LAYING). Each activity was sampled at 50Hz, with duration ranging between approximately 25 and 40 seconds. The data was then processed in a number of steps, summarized below:
 
 1. Pre-processed for noise and captured in 2.56s (128 readings at 50 Hz) sliding windows.
 2. Run through a series of filters and transforms to produce 33 primary variables.
 3. A number of statistics were computed on each variable, creating a total of 516 variables for each window (refered to as the feature vector). 
-4. ** Each variable was normalized to the range [-1,1] across all feature vectors.** Therefore, the feature vectors are **unitless**.
+4. **Each variable was normalized to the range [-1,1] across all feature vectors.** Therefore, the feature vectors are **unitless**.
 5. Subjects were randomly partitioned into a training set with 21 subjects and test set with 9 subjects
 
 A full description of the data can be found on the site linked to above and corresponding `README.txt` and `features_info.txt` file in the dataset.
@@ -41,7 +41,7 @@ The remaining 66 variables are explained by their names as follows:
 + [t|f] : either time or frequency domain. The frequency domain variables were computed using a Fast Fourier Transform.
 + [Body|Gravity] : The body or gravity component of acceleration.
 + [Acc|Gyro] : Acceleration or angular velocity.
-+ [|Jerk] : The derivative of [Acc|Gyro] (rate of change of acceleration or angular velocity).
++ [|Jerk] : The derivative of [Acc|Gyro] \(rate of change of acceleration or angular velocity\).
 + [Mag|X|Y|Z] : Either the magnitude of the variable or corresponding axis.
 + [mean|std] : mean or standard deviation over the window
 
