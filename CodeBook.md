@@ -6,7 +6,7 @@ The original dataset is stored on the UCI machine learning repository ([here]), 
 
 1. Pre-processed for noise and captured in 2.56s (128 readings at 50 Hz) sliding windows.
 2. Run through a series of filters and transforms to produce 33 primary variables.
-3. A number of statistics were computed on each variable, creating a total of 516 variables for each window (refered to as the feature vector). 
+3. A number of statistics were computed on each variable, creating a total of 516 variables for each window (referred to as the feature vector). 
 4. **Each variable was normalized to the range [-1,1] across all feature vectors.** Therefore, the feature vectors are **unitless**.
 5. Subjects were randomly partitioned into a training set with 21 subjects and test set with 9 subjects
 
