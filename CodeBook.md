@@ -47,5 +47,5 @@ The remaining 66 variables are explained by their names as follows:
 
 
 [here]: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-[//]: # (December 18, 2014
+[//]: # (December 18, 2014)
 
